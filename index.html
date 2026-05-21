@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultimate Task Manager</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <!-- Include SortableJS for Drag and Drop functionality -->
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+</head>
+
+<body>
+    <div class="app-container">
+
+        <header>
+            <div class="header-top">
+                <div class="date-container">
+                    <div class="date-number" id="dayNumber">--</div>
+                    <div class="date-details">
+                        <div class="date-month-year" id="monthYear">----</div>
+                        <div class="date-day" id="dayName">------</div>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <button id="themeToggle" aria-label="Toggle Theme">
+                        <ion-icon name="sunny-outline" id="themeIcon"></ion-icon>
+                    </button>
+                </div>
+            </div>
+
+            <div class="header-titles">
+                <h1>My Organizer</h1>
+                <p>Advanced Web-Based Task Management</p>
+            </div>
+
+            <div class="search-container">
+                <ion-icon name="search-outline"></ion-icon>
+                <input type="text" id="searchInput" placeholder="Search tasks..." autocomplete="off">
+            </div>
+        </header>
+
+        <div class="input-section">
+            <div class="input-row">
+                <input type="text" id="taskInput" placeholder="Add a new task..." autocomplete="off">
+                <div class="custom-select">
+                    <select id="prioritySelect" aria-label="Select priority">
+                        <option value="low">Low Priority</option>
+                        <option value="medium" selected>Medium Priority</option>
+                        <option value="high">High Priority</option>
+                    </select>
+                </div>
+                <button id="addBtn" aria-label="Add task">
+                    <ion-icon name="add-outline"></ion-icon>
+                </button>
+            </div>
+        </div>
+
+        <div class="tasks-container">
+            <div class="tasks-header">
+                <div class="filters">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="pending">Pending</button>
+                    <button class="filter-btn" data-filter="completed">Done</button>
+                </div>
+
+                <div class="progress-wrapper">
+                    <div class="stats" id="taskStats">0 / 0</div>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" id="progressBar"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Drag and drop container -->
+            <ul class="task-list" id="taskList">
+                <!-- Tasks dynamically injected -->
+            </ul>
+
+            <div class="empty-state" id="emptyState" style="display: none;">
+                <div class="empty-icon-wrap">
+                    <ion-icon name="layers-outline"></ion-icon>
+                </div>
+                <p id="emptyStateMsg">No tasks found. Add some above!</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="background-elements">
+        <div class="mesh-bg"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
